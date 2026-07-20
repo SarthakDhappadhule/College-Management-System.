@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — JSPM ERP Portal</title>
+  <meta name="description" content="Admin login for the Jayawantrao Sawant College ERP portal.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../frontend/Css/style_1.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="app-header">
+    <div class="app-header__inner">
+      <div class="brand">
+        <img class="brand__logo" src="assets/images/logo.svg" alt="Jayawantrao Sawant College crest">
+        <span class="brand__divider" aria-hidden="true"></span>
+        <div class="brand__text">
+          <span class="brand__title">Jayawantrao Sawant College</span>
+          <span class="brand__subtitle">Handewadi · ERP Portal</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main" id="main-content">
+    <div class="auth-shell">
+      <div class="auth-intro">
+        <div class="auth-intro__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="10" width="16" height="10" rx="2"/>
+            <path stroke-linecap="round" d="M8 10V7a4 4 0 118 0v3"/>
+          </svg>
+        </div>
+        <div class="auth-intro__eyebrow-row">
+          <span class="rule" aria-hidden="true"></span>
+          <h1 class="auth-intro__title">Admin Login</h1>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <p class="auth-intro__subtitle">Enter your credentials to access the admin panel.</p>
+      </div>
+
+      <div class="auth-card">
+        <form data-form="admin-login" novalidate>
+          <div class="field-group">
+            <label class="field-label" for="admin-login-id">Login ID</label>
+            <div class="input-wrap">
+              <span class="input-wrap__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zM4 21c0-3.87 3.58-7 8-7s8 3.13 8 7"/></svg>
+              </span>
+              <input type="text" id="admin-login-id" name="loginId" data-field="id" placeholder="Enter your Login ID" autocomplete="username" required>
+            </div>
+            <p class="field-error" role="alert"><span>Login ID is required.</span></p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="admin-password">Password</label>
+            <div class="input-wrap">
+              <span class="input-wrap__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path stroke-linecap="round" d="M8 10V7a4 4 0 118 0v3"/></svg>
+              </span>
+              <input type="password" id="admin-password" name="password" data-field="password" placeholder="Enter your password" autocomplete="current-password">
+              <button type="button" class="icon-toggle" data-toggle-password="admin-password"></button>
+            </div>
+            <p class="field-error" role="alert"><span>Password is required.</span></p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="admin-captcha-input">Captcha</label>
+            <div class="captcha-row">
+              <div class="captcha-display">
+                <span class="captcha-code" data-captcha-code aria-hidden="false"></span>
+                <button type="button" class="captcha-refresh" data-captcha-refresh aria-label="Generate a new captcha code">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 11A8 8 0 105.5 16.5M4 4v6h6"/></svg>
+                </button>
+              </div>
+              <div class="input-wrap">
+                <input type="text" id="admin-captcha-input" name="captcha" data-captcha-input placeholder=" Enter captcha" autocomplete="off" spellcheck="false">
+              </div>
+            </div>
+            <p class="field-error" role="alert"><span>Please enter the captcha code.</span></p>
+          </div>
+
+          <button type="submit" class="btn" data-submit>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm2-10V7a4 4 0 118 0v2"/></svg>
+            Login as Admin
+          </button>
+
+          <hr class="auth-card__divider">
+
+          <p class="security-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5-2v3c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3 8 3z"/></svg>
+            Secure Login · Your data is protected
+          </p>
+        </form>
+      </div>
+
+      <p class="auth-switch">Not an administrator? <a class="link" href="index.html">Return to login selection</a></p>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="app-footer__inner">
+      <span>© <span id="year"></span> Jayawantrao Sawant Polytechnic. All rights reserved.</span>
+      <span class="app-footer__meta">
+        <span>Handewadi, Pune</span>
+        <span>Accredited Institution</span>
+      </span>
+    </div>
+  </footer>
+
+  <script src="../JSPM project/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
