@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSPM ERP — FastAPI Connection Test</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 20px
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 12px;
+      box-sizing: border-box
+    }
+
+    button {
+      padding: 10px 16px;
+      cursor: pointer
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 16px;
+      white-space: pre-wrap;
+      border-radius: 8px
+    }
+
+    #status {
+      font-weight: 700;
+      margin: 16px 0
+    }
+  </style>
+</head>
+
+<body>
+  <h1>FastAPI Connection Test</h1>
+  <p>This tests only Browser JavaScript → FastAPI → JSON response.</p>
+  <label for="phone">Teacher phone number</label>
+  <input id="phone" value="9876543210" inputmode="numeric" autocomplete="off">
+  <label for="day">Simulated day (optional, e.g. MON)</label>
+  <input id="day" placeholder="MON">
+  <label for="time">Simulated time (optional, HH:MM)</label>
+  <input id="time" placeholder="11:30">
+  <button id="test">Test Active-Slot Endpoint</button>
+  <div id="status">Not tested yet.</div>
+  <pre id="result">—</pre>
+  <script>
+    const BASE = 'http://127.0.0.1:8000';
+    document.getElementById('test').addEventListener('click', async () => {
+      const phone = document.getElementById('phone').value.trim();
+      const day = document.getElementById('day').value.trim();
+      const time = document.getElementById('time').value.trim();
+      const status = document.getElementById('status');
+      const result = document.getElementById('result');
+      if (!phone) { status.textContent = 'Enter a teacher phone number.'; return; }
+      const url = new URL(`${BASE}/teachers/by-phone/${encodeURIComponent(phone)}/active-slot`);
+      if (day) url.searchParams.set('simulated_day', day);
+      if (time) url.searchParams.set('simulated_time', time);
+      status.textContent = 'Calling FastAPI…'; result.textContent = '';
+      try {
+        const response = await fetch(url);
+        const text = await response.text();
+        let data; try { data = JSON.parse(text) } catch { data = text }
+        status.textContent = `HTTP ${response.status} — ${response.ok ? 'Server responded successfully' : 'Server returned an error'}`;
+        result.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+      } catch (err) {
+        status.textContent = 'Connection failed';
+        result.textContent = String(err);
+      }
+    });
+  </script>
+</body>
+
+</html>

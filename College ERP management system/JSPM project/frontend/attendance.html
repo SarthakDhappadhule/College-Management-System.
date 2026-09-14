@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take Today's Attendance | JSPM ERP</title>
+  <link rel="stylesheet" href="../frontend/Css/attendance.css">
+</head>
+<body>
+  <main class="attendance-page">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">JSPM ERP · Faculty Portal</p>
+        <h1>Take Today's Attendance</h1>
+        <p class="session-label" data-live-session-label>Connecting to the live timetable…</p>
+      </div>
+      <a class="back-link" href="../frontend/Css/dashboardforattendence-responsive-v5-regenerated.css">← Dashboard</a>
+    </header>
+
+    <section class="session-bar">
+      <div><span>Subject</span><strong data-live-subject>—</strong></div>
+      <div><span>Class</span><strong data-live-class>—</strong></div>
+      <div><span>Time</span><strong data-live-time>—</strong></div>
+      <div><span>Type</span><strong data-live-type>—</strong></div>
+    </section>
+
+    <section class="screen" data-loading-screen>
+      <div class="loader"></div><h2>Loading live class…</h2><p>Checking the faculty timetable.</p>
+    </section>
+
+    <section class="screen" data-live-screen hidden>
+      <div class="status-card"><span class="live-dot"></span><span>Active lecture found</span></div>
+      <h2>Ready to mark attendance</h2>
+      <p>The student list will be loaded from the active class.</p>
+      <button class="primary" data-take-attendance-btn>Take Attendance</button>
+    </section>
+
+    <section class="screen" data-no-live-screen hidden>
+      <div class="empty-icon">◷</div><h2>No active lecture</h2><p>There is no lecture scheduled for this teacher at the current time.</p>
+      <button class="secondary" data-retry-live>Check Again</button>
+    </section>
+
+    <section class="screen" data-live-error-screen hidden>
+      <div class="error-icon">!</div><h2>Could not load the live class</h2><p data-live-error-message>Backend connection failed.</p>
+      <button class="secondary" data-retry-live>Retry</button>
+    </section>
+
+    <section class="screen attendance-card" data-marking-screen hidden>
+      <div class="topline"><span data-counter>Student 1 of 0</span><span data-progress-label>0 / 0 students completed</span></div>
+      <div class="progress"><div data-progress-fill></div></div>
+      <div class="student">
+        <div class="avatar" data-avatar-initial>?</div>
+        <p class="roll" data-roll-no>Roll No: —</p>
+        <h2 data-student-name>Loading…</h2>
+        <p>Mark the current student's attendance.</p>
+      </div>
+      <div class="attendance-actions">
+        <button class="present" data-mark-present>✓ Present</button>
+        <button class="absent" data-mark-absent>✕ Absent</button>
+      </div>
+      <button class="prev" data-prev-student>← Previous Student</button>
+    </section>
+
+    <section class="screen" data-students-empty-screen hidden>
+      <h2>No students found</h2><p>The backend returned an empty student list for this class.</p>
+    </section>
+
+    <section class="screen" data-students-error-screen hidden>
+      <h2>Could not load students</h2><p data-students-error-message></p>
+    </section>
+
+    <section class="screen summary-card" data-summary-screen hidden>
+      <h2>Attendance Summary</h2>
+      <div class="stats">
+        <div><strong data-present-count>0</strong><span>Present</span></div>
+        <div><strong data-absent-count>0</strong><span>Absent</span></div>
+        <div><strong data-total-count>0</strong><span>Total</span></div>
+      </div>
+      <div class="summary-actions"><button class="secondary" data-open-review>Review Attendance</button><button class="primary" data-submit-attendance>Submit Attendance</button></div>
+    </section>
+
+    <section class="screen review-card" data-review-screen hidden>
+      <h2>Review Attendance</h2>
+      <p>Correct any student before submitting.</p>
+      <div data-review-list></div>
+      <div class="summary-actions"><button class="secondary" data-back-to-summary>← Back to Summary</button><button class="primary" data-submit-attendance>Submit Attendance</button></div>
+    </section>
+
+    <div class="toast" data-toast role="status"></div>
+  </main>
+  <script src="attendance-flow2.js"></script>
+</body>
+</html>

@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Faculty Dashboard — JSPM ERP Portal</title>
+<meta content="Faculty dashboard for Jayawantrao Sawant College ERP Portal." name="description"/>
+<link href="../frontend/images/jspmlogo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Keep the project-wide stylesheet unchanged. -->
+<link href="../frontend/Css/mainstyle.css" rel="stylesheet"/>
+<!-- Faculty-dashboard-specific refinements. -->
+<link href="../frontend/Css/dashboardforattendence-responsive-v5-regenerated.css" rel="stylesheet"/>
+</head>
+<body class="faculty-body">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- ============================== HEADER ============================== -->
+<header class="dashboard-header">
+<div class="dashboard-header__left">
+<button aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation menu" class="hamburger-btn" data-hamburger="" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+</svg>
+</button>
+<img alt="Jayawantrao Sawant College crest" class="dashboard-header__logo" src="../frontend/images/jspmlogo.png"/>
+<div class="dashboard-header__brand">
+<strong>Jayawantrao Sawant College</strong>
+<span>Handewadi, Pune</span>
+</div>
+</div>
+<div class="dashboard-header__right">
+<button aria-label="View notifications" class="icon-btn" data-notif-bell="" id="fdNotifBell" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.4-2.1a2 2 0 01-.6-1.5V11a7 7 0 10-14 0v2.4a2 2 0 01-.6 1.5L2 17h5m8 0a3 3 0 11-6 0m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span aria-hidden="true" class="icon-btn__dot"></span>
+</button>
+<span aria-hidden="true" class="header-divider"></span>
+<div class="profile-menu" data-profile-menu="">
+<button aria-expanded="false" aria-haspopup="true" class="profile-trigger" data-profile-trigger="" type="button">
+<span aria-hidden="true" class="profile-avatar">AS</span>
+<span class="profile-text">
+<strong>Mrs. A.S. Vatte</strong>
+<span>Faculty</span>
+</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" viewbox="0 0 24 24">
+<path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="profile-dropdown" role="menu">
+<a data-open-panel="profile" href="#profile" role="menuitem">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zM4 21c0-3.87 3.58-7 8-7s8 3.13 8 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            My Profile
+          </a>
+<a data-open-panel="settings" href="#settings" role="menuitem">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H4a2 2 0 110-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H10a1.65 1.65 0 001-1.51V4a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Settings
+          </a>
+<hr/>
+<a class="danger" href="#" role="menuitem">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Log Out
+          </a>
+</div>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="sidebar-backdrop" data-sidebar-backdrop=""></div>
+<!-- ============================== APP SHELL ============================== -->
+<div class="app-shell">
+<aside aria-label="Primary navigation" class="sidebar" id="sidebar">
+<div class="sidebar__group">
+<p class="sidebar__label" data-i18n="overview">Overview</p>
+<a aria-current="page" class="nav-link is-active" href="faculty-dashboard.html">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Dashboard
+        </a>
+</div>
+<div class="sidebar__group">
+<p class="sidebar__label" data-i18n="attendance">Attendance</p>
+<a class="nav-link" href="select-year.html">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Take Today's Attendance
+        </a>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Attendance Records
+        </a>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4a2 2 0 00-2-2H6.5A2 2 0 004 4.5v15z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          My Classes
+        </a>
+</div>
+<div class="sidebar__group">
+<p class="sidebar__label" data-i18n="reports">Reports</p>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6M9 16h6M9 8h2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Attendance Log
+        </a>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 20V10M12 20V4M20 20v-7" stroke-linecap="round"></path>
+</svg>
+          Reports
+        </a>
+</div>
+<div class="sidebar__group">
+<p class="sidebar__label" data-i18n="management">Management</p>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Students
+        </a>
+<a class="nav-link" data-open-panel="timetable" href="#timetable">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="18" x="3" y="5"></rect>
+<path d="M3 10h18M8 3v4M16 3v4" stroke-linecap="round"></path>
+</svg>
+          Timetable
+        </a>
+</div>
+<div class="sidebar__group">
+<p class="sidebar__label" data-i18n="settings">Settings</p>
+<a class="nav-link" data-open-panel="settings" href="#settings">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-.33-1.82A1.65 1.65 0 004 14a2 2 0 110-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H10A1.65 1.65 0 0011 4.91V4a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10A1.65 1.65 0 0019.4 11H20a2 2 0 110 4h-.09a1.65 1.65 0 00-.51 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Settings
+        </a>
+<a class="nav-link" href="#">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M9.5 9a2.5 2.5 0 015 .5c0 1.5-2 1.8-2.3 3.3M12 17h.01" stroke-linecap="round"></path>
+</svg>
+          Help &amp; Support
+        </a>
+</div>
+</aside>
+<!-- ============================== MAIN ============================== -->
+<main class="dash-main" id="main-content">
+<div class="page-toprow">
+<div class="page-toprow__left">
+<button class="btn-back" onclick="history.back()" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+            Go Back
+          </button>
+<div class="greeting">
+<p class="section-kicker" data-i18n="facultyPortal">Faculty Portal</p>
+<h1 class="greeting__title">
+              Good Morning, Mrs. A.S. Vatte
+              <span aria-hidden="true" class="wave">👋</span>
+</h1>
+<p class="greeting__subtitle" data-i18n="workspaceSubtitle">Your teaching and attendance workspace.</p>
+</div>
+</div>
+<div class="page-toprow__right">
+<div class="date-chip">
+<button aria-label="Refresh date" class="date-chip__refresh" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M20 11A8 8 0 105.5 16.5M4 4v6h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- API HOOK — CURRENT DATE
+     Shivraj's backend determines "current day" from the Excel timetable
+     logic, so this should come from his API response rather than the
+     browser's own Date(). Update both:
+       - the `datetime` attribute (ISO format, e.g. "2026-07-08")
+       - the visible text (e.g. "8 July 2026, Tuesday")
+     Suggested field from his live-session response: current_date -->
+<time datetime="" id="dashboardDate">Loading date…</time>
+</div>
+<span aria-hidden="true" class="mini-avatar">AS</span>
+</div>
+</div>
+<!-- ============================== LIVE SESSION ============================== -->
+<!-- API HOOK — WHOLE-SECTION VISIBILITY
+     This <section class="live-card"> should only render/show when
+     Shivraj's live-session API returns is_live: true (or equivalent).
+     When is_live is false, this section should be hidden and a separate
+     "no lecture right now" block should be shown instead.
+     THAT "NO LIVE LECTURE" BLOCK DOES NOT EXIST YET IN THIS FILE —
+     it needs to be added as a sibling <section> here (same position),
+     reusing .live-card's general card styling, before this hook can be
+     fully wired up. Same applies to a loading state while the first
+     API call is in flight, and an error state if the call fails. -->
+<section aria-labelledby="live-class-title" class="live-card">
+<div class="live-card__top">
+<div class="live-status">
+<span class="live-badge">
+<span aria-hidden="true" class="live-dot"></span>
+<span data-i18n="liveNow">Live Now</span>
+            </span>
+<span class="live-status__text" data-i18n="currentSession">Current teaching session</span>
+</div>
+<span aria-hidden="true" class="live-broadcast">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13" stroke-linecap="round"></path>
+<circle cx="12" cy="12" fill="currentColor" r="2" stroke="none"></circle>
+</svg>
+</span>
+</div>
+<div class="live-card__body">
+<div class="live-card__info">
+<div class="live-card__heading">
+<span aria-hidden="true" class="live-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4a2 2 0 00-2-2H6.5A2.5 2.5 0 004 4.5v15z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<div>
+<p class="live-card__eyebrow">Class in progress</p>
+<!-- API HOOK — CLASS + DEPARTMENT
+     Suggested fields from live-session response: class, department
+     (combine as "{class} — {department}") -->
+<h2 class="live-card__title" id="live-class-title">Checking current class…</h2>
+<span id="live-type-badge" class="live-type-badge" hidden></span>
+<span id="live-batch-badge" class="live-batch-badge" hidden></span>
+<!-- MISSING FROM THIS MARKUP — LECTURE TYPE + BATCH
+     The spec calls for showing whether this is a "Lecture" or "Practical",
+     and the batch (e.g. "Batch B") when it's a practical. There is
+     currently no element here for either of these — no matching class
+     exists in dashboardforattendence-responsive-v5-regenerated.css
+     either. A small pill/badge would typically go right here, e.g.:
+       <span class="live-type-badge">Practical</span>
+       <span class="live-batch-badge">Batch B</span>
+     (only shown if type === "Practical"). These need to be added — this
+     comment just flags that the hook has nowhere to attach yet. -->
+</div>
+</div>
+<div class="live-meta">
+<div class="live-meta__row">
+<span aria-hidden="true" class="live-meta__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 12a4.5 4.5 0 100-9 4.5 4.5 0 000 9zM4 21c0-3.87 3.58-7 8-7s8 3.13 8 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- API HOOK — FACULTY NAME
+     Suggested field: faculty_name (or this may come from your logged-in
+     user/session data rather than the live-session endpoint — confirm
+     with Shivraj which source is authoritative). -->
+<span>
+<span class="live-meta__label">Faculty</span>
+<span class="live-meta__value" id="live-faculty-name">Mrs. A.S. Vatte</span>
+</span>
+</div>
+<div class="live-meta__row">
+<span aria-hidden="true" class="live-meta__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4a2 2 0 00-2-2H6.5A2.5 2.5 0 004 4.5v15z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- API HOOK — SUBJECT
+     Suggested field: subject (the "(DSU)" abbreviation may be a separate
+     field like subject_code — confirm with Shivraj whether these come
+     as one combined string or two fields to join yourself). -->
+<span>
+<span class="live-meta__label">Subject</span>
+<span class="live-meta__value" id="live-subject">Data Structures (DSU)</span>
+</span>
+</div>
+<div class="live-meta__row">
+<span aria-hidden="true" class="live-meta__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<!-- API HOOK — TIME + ROOM
+     Suggested fields: start_time, end_time, room (combine as
+     "{start_time} – {end_time}  ·  Room {room}"). "Current time" itself
+     (used to decide what's live) is Shivraj's backend logic — do not
+     recompute this in the frontend, just display what the API returns. -->
+<span>
+<span class="live-meta__label">Time &amp; Room</span>
+<span class="live-meta__value" id="live-time-room">Checking timetable…</span>
+</span>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="live-card__visual">
+<div class="live-visual__ring live-visual__ring--outer"></div>
+<div class="live-visual__ring live-visual__ring--inner"></div>
+<span class="live-visual__icon">
+<svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+<path d="M12 3a6 6 0 00-6 6v2c0 3.5-1 5.5-2 7M12 3a6 6 0 016 6v2c0 1.3.2 2.4.5 3.3M8 21c.6-1 1-2.5 1-4v-2a3 3 0 116 0M12 21a9 9 0 001-4.5V11" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</div>
+</div>
+<!-- API HOOK — TAKE ATTENDANCE TRIGGER
+     This button should, on click, call Shivraj's "students for this
+     session" endpoint using the session_id from the live-session
+     response, then hand off into the one-by-one marking screen. It
+     currently has no id/data-attribute for JS to select it by — add
+     one (e.g. id="startAttendanceBtn" or data-take-attendance-btn) so
+     your script has something stable to bind addEventListener to. -->
+<button class="btn-start-attendance" id="startAttendanceBtn" type="button">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 3a6 6 0 00-6 6v2c0 3.5-1 5.5-2 7M12 3a6 6 0 016 6v2c0 1.3.2 2.4.5 3.3M8 21c.6-1 1-2.5 1-4v-2a3 3 0 116 0M12 21a9 9 0 001-4.5V11" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Start Attendance Now
+        </button>
+</section>
+<!-- ============================== QUICK ACTIONS ============================== -->
+<section aria-labelledby="quick-actions-title">
+<div class="section-heading">
+<div>
+<p class="section-kicker" data-i18n="workspace">Workspace</p>
+<h2 id="quick-actions-title" data-i18n="quickAccess">Quick Access</h2>
+</div>
+<span aria-hidden="true" class="section-heading__line"></span>
+</div>
+<div class="quick-grid">
+<a class="quick-card" href="#">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">My Classes</p>
+<p class="quick-card__desc">View timetable</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+<a class="quick-card" href="#">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6M9 16h6M9 8h2" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">Attendance Log</p>
+<p class="quick-card__desc">View records</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+<a class="quick-card" href="#">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 20V10M12 20V4M20 20v-7" stroke-linecap="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">Reports</p>
+<p class="quick-card__desc">Analytics &amp; stats</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+<a class="quick-card" href="#">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="9" cy="7" r="4"></circle>
+<path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">Students</p>
+<p class="quick-card__desc">Manage students</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+<a class="quick-card" data-open-panel="timetable" href="#timetable">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="18" x="3" y="5"></rect>
+<path d="M3 10h18M8 3v4M16 3v4" stroke-linecap="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">Timetable</p>
+<p class="quick-card__desc">Class schedule</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+<a class="quick-card" data-open-panel="settings" href="#settings">
+<span aria-hidden="true" class="quick-card__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82A1.65 1.65 0 004 14a2 2 0 110-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H10A1.65 1.65 0 0011 4.91V4a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10A1.65 1.65 0 0019.4 11H20a2 2 0 110 4h-.09a1.65 1.65 0 00-.51 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span>
+<p class="quick-card__title">Settings</p>
+<p class="quick-card__desc">App preferences</p>
+</span>
+<span aria-hidden="true" class="quick-card__arrow">→</span>
+</a>
+</div>
+</section>
+<!-- ============================== SECURITY ============================== -->
+<section aria-label="Attendance security notice" class="secure-banner">
+<div class="secure-banner__left">
+<span aria-hidden="true" class="secure-banner__icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5-2v3c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3 8 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<div>
+<p class="secure-banner__title" data-i18n="secureAttendance">Secure &amp; Accurate Attendance</p>
+<p class="secure-banner__desc" data-i18n="secureDesc">Lecture, time and attendance records are handled through the ERP workflow.</p>
+</div>
+</div>
+<span aria-hidden="true" class="secure-banner__seal">
+<svg fill="none" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24">
+<path d="M12 3l7 3v5c0 4.5-2.7 7.8-7 10-4.3-2.2-7-5.5-7-10V6l7-3z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+</section>
+</main>
+</div>
+
+<!-- ============================== NOTIFICATION CENTER ============================== -->
+<div aria-hidden="true" class="fd-notif-overlay" id="fdNotifOverlay">
+  <div class="fd-notif-backdrop" data-close-notifications></div>
+  <section class="fd-notif-panel" id="fdNotifPanel" role="dialog" aria-modal="true" aria-labelledby="fdNotifTitle">
+    <header class="fd-notif-panel__header">
+      <div class="fd-notif-title-wrap">
+        <span class="fd-notif-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-2.1a2 2 0 01-.6-1.5V11a7 7 0 10-14 0v2.4a2 2 0 01-.6 1.5L2 17h5m8 0a3 3 0 11-6 0m6 0H9"/>
+          </svg>
+        </span>
+        <div>
+          <p class="fd-panel__eyebrow">Faculty Portal</p>
+          <h2 id="fdNotifTitle">Notifications <span class="fd-notif-count" id="fdNotifCount">0</span></h2>
+        </div>
+      </div>
+      <button class="fd-panel__close" type="button" aria-label="Close notifications" data-close-notifications>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="fd-notif-toolbar">
+      <button class="fd-notif-sync" id="fdNotifSync" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M20 11a8 8 0 00-14.9-4M4 5v5h5M4 13a8 8 0 0014.9 4M20 19v-5h-5"/></svg>
+        Sync notifications
+      </button>
+      <button class="fd-notif-clear" id="fdNotifClear" type="button">Delete all</button>
+    </div>
+    <div class="fd-notif-list" id="fdNotifList" tabindex="0" aria-live="polite"></div>
+    <p class="fd-notif-status" id="fdNotifStatus" role="status"></p>
+  </section>
+</div>
+
+<!-- ============================== IN-PAGE FACULTY WORKSPACE ============================== -->
+<div aria-hidden="true" class="fd-panel-overlay" id="fdPanelOverlay">
+<div class="fd-panel-backdrop" data-close-panel=""></div>
+<section aria-labelledby="fdPanelTitle" aria-modal="true" class="fd-panel" id="fdPanel" role="dialog">
+<header class="fd-panel__header">
+<div class="fd-panel__brand">
+<span aria-hidden="true" class="fd-panel__brand-icon">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20V4a2 2 0 00-2-2H6.5A2.5 2.5 0 004 4.5v15z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<div>
+<p class="fd-panel__eyebrow">Faculty Portal</p>
+<h2 id="fdPanelTitle">Faculty Workspace</h2>
+</div>
+</div>
+<button aria-label="Close panel" class="fd-panel__close" data-close-panel="" type="button">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path>
+</svg>
+</button>
+</header>
+<div class="fd-panel__layout">
+<nav aria-label="Faculty workspace sections" class="fd-panel-nav">
+<button class="fd-panel-nav__item is-active" data-panel-tab="profile" type="button">
+<span class="fd-panel-nav__icon">👤</span><span data-i18n="myProfile">My Profile</span>
+</button>
+<button class="fd-panel-nav__item" data-panel-tab="settings" type="button">
+<span class="fd-panel-nav__icon">⚙</span><span data-i18n="settings">Settings</span>
+</button>
+<button class="fd-panel-nav__item" data-panel-tab="timetable" type="button">
+<span class="fd-panel-nav__icon">▦</span><span data-i18n="timetable">Timetable</span>
+</button>
+</nav>
+<div class="fd-panel__content">
+<!-- PROFILE -->
+<section class="fd-panel-view is-active" data-panel-view="profile">
+<div class="fd-view-heading">
+<div>
+<p class="section-kicker">Account</p>
+<h3 data-i18n="myProfile">My Profile</h3>
+<p>Manage the information displayed across your faculty ERP account.</p>
+</div>
+</div>
+<div class="fd-profile-hero">
+<div class="fd-profile-photo-wrap">
+<div aria-label="Profile photo preview" class="fd-profile-photo" id="profilePhotoPreview">AS</div>
+<label class="fd-photo-upload">
+<input accept="image/png,image/jpeg,image/webp" id="profileImageInput" type="file"/>
+<span>Change photo</span>
+</label>
+</div>
+<div>
+<span class="fd-status-pill"><span></span> Faculty account</span>
+<h4 id="profileHeroName">Mrs. A.S. Vatte</h4>
+<p>Faculty • Computer Engineering</p>
+</div>
+</div>
+<form class="fd-form" id="profileForm">
+<div class="fd-form-grid">
+<label class="fd-field">
+<span>Full name</span>
+<input autocomplete="name" id="profileName" required="" type="text" value="Mrs. A.S. Vatte"/>
+</label>
+<label class="fd-field">
+<span>Mobile number</span>
+<input autocomplete="tel" id="profileMobile" inputmode="tel" type="tel" value="+91 98765 43210"/>
+</label>
+<label class="fd-field fd-field--wide">
+<span>Email address</span>
+<input autocomplete="email" id="profileEmail" required="" type="email" value="faculty@jspm.edu.in"/>
+</label>
+<label class="fd-field">
+<span>Department</span>
+<input disabled="" type="text" value="Computer Engineering"/>
+</label>
+<label class="fd-field">
+<span>Role</span>
+<input disabled="" type="text" value="Faculty"/>
+</label>
+</div>
+<div class="fd-readonly-note">
+<span>🔒</span>
+<div><strong>Account ID is managed by the ERP.</strong><br/><small>Contact the administrator if your official faculty information needs correction.</small></div>
+</div>
+<div class="fd-actions">
+<button class="fd-btn fd-btn--secondary" data-close-panel="" type="button">Cancel</button>
+<button class="fd-btn fd-btn--primary" type="submit" data-i18n="saveProfile">Save profile</button>
+</div>
+<p class="fd-save-message" id="profileSaveMessage" role="status"></p>
+</form>
+</section>
+<!-- SETTINGS -->
+<section class="fd-panel-view" data-panel-view="settings">
+<div class="fd-view-heading">
+<div>
+<p class="section-kicker">Preferences</p>
+<h3 data-i18n="settingsTitle">Settings</h3>
+<p>Personalize the ERP without changing your college-wide configuration.</p>
+</div>
+</div>
+<div class="fd-setting-list">
+<div class="fd-setting-group">
+<div class="fd-setting-group__title"><span>🌐</span><div><h4>Language &amp; region</h4><p>Choose how the faculty interface is displayed.</p></div></div>
+<div class="fd-setting-row">
+<div><strong>Interface language</strong><small>Applies to labels, menus and dashboard actions.</small></div>
+<select class="fd-select" id="settingLanguage">
+<option value="en">English</option>
+<option value="mr">मराठी (Marathi)</option>
+<option value="hi">हिन्दी (Hindi)</option>
+</select>
+</div>
+<div class="fd-setting-row">
+<div><strong>Date format</strong><small>Used in attendance records and reports.</small></div>
+<select class="fd-select" id="settingDateFormat">
+<option value="dmy">DD/MM/YYYY</option>
+<option value="mdy">MM/DD/YYYY</option>
+<option value="iso">YYYY-MM-DD</option>
+</select>
+</div>
+</div>
+<div class="fd-setting-group">
+<div class="fd-setting-group__title"><span>🔔</span><div><h4>Notifications</h4><p>Control faculty alerts and reminders.</p></div></div>
+<div class="fd-setting-row">
+<div><strong>Attendance reminders</strong><small>Notify when a scheduled attendance session is approaching.</small></div>
+<label class="fd-switch"><input checked="" id="settingAttendanceReminder" type="checkbox"/><span></span></label>
+</div>
+<div class="fd-setting-row">
+<div><strong>ERP notifications</strong><small>Receive notices, timetable updates and administrative alerts.</small></div>
+<label class="fd-switch"><input checked="" id="settingNotifications" type="checkbox"/><span></span></label>
+</div>
+</div>
+<div class="fd-setting-group">
+<div class="fd-setting-group__title"><span>🖥</span><div><h4>Dashboard experience</h4><p>Fine-tune how your workspace behaves.</p></div></div>
+<div class="fd-setting-row">
+<div><strong>Automatic live-session refresh</strong><small>Keep the current lecture card synchronized with the timetable service.</small></div>
+<label class="fd-switch"><input checked="" id="settingAutoRefresh" type="checkbox"/><span></span></label>
+</div>
+<div class="fd-setting-row">
+<div><strong>Reduced motion</strong><small>Minimize interface animations for a calmer workspace.</small></div>
+<label class="fd-switch"><input id="settingReducedMotion" type="checkbox"/><span></span></label>
+</div>
+</div>
+<div class="fd-setting-group">
+<div class="fd-setting-group__title"><span>🔐</span><div><h4>Security</h4><p>Quick account-security controls.</p></div></div>
+<div class="fd-setting-row fd-setting-row--action">
+<div><strong>Change password</strong><small>Your password should be updated through the secure account service.</small></div>
+<button class="fd-outline-btn" data-demo-action="password" type="button">Manage</button>
+</div>
+<div class="fd-setting-row fd-setting-row--action">
+<div><strong>Active sessions</strong><small>Review signed-in devices and sessions.</small></div>
+<button class="fd-outline-btn" data-demo-action="sessions" type="button">Review</button>
+</div>
+</div>
+</div>
+<div class="fd-auto-save-note">
+  <span aria-hidden="true">✓</span>
+  <div><strong>Preferences apply instantly</strong><small>Language, notifications and dashboard preferences are saved automatically on this device.</small></div>
+</div>
+<div class="fd-logout-card">
+  <div class="fd-logout-card__icon" aria-hidden="true">↪</div>
+  <div><strong>Log out of faculty account</strong><small>End the current ERP session securely.</small></div>
+  <button class="fd-logout-btn" id="fdLogoutBtn" type="button">Log Out</button>
+</div>
+<p class="fd-save-message" id="settingsSaveMessage" role="status"></p>
+</section>
+<!-- TIMETABLE -->
+<section class="fd-panel-view" data-panel-view="timetable">
+<div class="fd-view-heading">
+<div>
+<p class="section-kicker">Schedule Management</p>
+<h3 data-i18n="timetableTitle">Timetable</h3>
+<p>Upload the faculty timetable spreadsheet used by the ERP schedule workflow.</p>
+</div>
+</div>
+<div class="fd-upload-card">
+<div class="fd-upload-card__icon">▦</div>
+<div>
+<h4>Upload timetable Excel sheet</h4>
+<p>Supported formats: .xlsx and .xls. The selected file stays on this device until you send it to your backend.</p>
+</div>
+<label class="fd-upload-btn">
+<input accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" id="timetableInput" type="file"/>
+<span>Choose Excel file</span>
+</label>
+</div>
+<div class="fd-file-card is-hidden" id="timetableFileCard">
+<div class="fd-file-icon">XLS</div>
+<div class="fd-file-info">
+<strong id="timetableFileName">No file selected</strong>
+<span id="timetableFileMeta">—</span>
+</div>
+<button aria-label="Remove selected timetable" class="fd-icon-btn" id="removeTimetable" type="button">×</button>
+</div>
+<div class="fd-upload-preview is-hidden" id="timetablePreview">
+<div class="fd-preview-head">
+<div><strong>Spreadsheet preview</strong><small id="timetablePreviewNote">First rows from the selected sheet</small></div>
+<span class="fd-status-pill"><span></span> Ready</span>
+</div>
+<div class="fd-table-wrap"><table id="timetablePreviewTable"></table></div>
+</div>
+<div class="fd-readonly-note">
+<span>💡</span>
+<div><strong>Recommended backend flow</strong><br/><small>Frontend selects the Excel file → send it as multipart/form-data to FastAPI → backend validates the timetable → store/process it → dashboard receives the current lecture data.</small></div>
+</div>
+<div class="fd-actions">
+<button class="fd-btn fd-btn--secondary" data-close-panel="" type="button">Close</button>
+<button class="fd-btn fd-btn--primary" disabled="" id="uploadTimetableBtn" type="button">Upload to ERP</button>
+</div>
+<p class="fd-save-message" id="timetableMessage" role="status"></p>
+</section>
+</div>
+</div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<!-- Keep the existing project JS files connected. -->
+<script src="../javascript/dashboard.js"></script>
+<script src="../javascript/faculty-dashboard.js"></script>
+<!-- Page-local mobile navigation/profile controls. These work even if the
+       project dashboard script does not bind these controls. -->
+<script>
+(() => {
+  const $ = (s, root=document) => root.querySelector(s);
+  const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+  const body = document.body;
+
+  // ---------------- Mobile navigation ----------------
+  const hamburger = $('[data-hamburger]');
+  const sidebar = $('#sidebar');
+  const backdrop = $('[data-sidebar-backdrop]');
+  const profileMenu = $('[data-profile-menu]');
+  const profileTrigger = $('[data-profile-trigger]');
+
+  const setNav = open => {
+    body.classList.toggle('nav-open', open);
+    hamburger?.setAttribute('aria-expanded', String(open));
+    hamburger?.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  };
+  hamburger?.addEventListener('click', e => { e.preventDefault(); setNav(!body.classList.contains('nav-open')); });
+  backdrop?.addEventListener('click', () => setNav(false));
+  sidebar?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setNav(false)));
+
+  // ---------------- Header profile dropdown: mobile-safe ----------------
+  profileTrigger?.addEventListener('click', e => {
+    e.preventDefault(); e.stopPropagation();
+    const open = !profileMenu?.classList.contains('is-open');
+    profileMenu?.classList.toggle('is-open', open);
+    profileTrigger.setAttribute('aria-expanded', String(open));
+  });
+  profileMenu?.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', e => {
+    if (profileMenu && !profileMenu.contains(e.target)) {
+      profileMenu.classList.remove('is-open');
+      profileTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ---------------- Workspace panel ----------------
+  const panelOverlay = $('#fdPanelOverlay');
+  const panelTitle = $('#fdPanelTitle');
+  const panelTabs = $$('[data-panel-tab]');
+  const panelViews = $$('[data-panel-view]');
+  const panelTitles = { profile: 'My Profile', settings: 'Settings', timetable: 'Timetable' };
+
+  const showPanelTab = tab => {
+    panelTabs.forEach(btn => btn.classList.toggle('is-active', btn.dataset.panelTab === tab));
+    panelViews.forEach(view => view.classList.toggle('is-active', view.dataset.panelView === tab));
+    if (panelTitle) panelTitle.textContent = (translations[settings?.settingLanguage || 'en']?.[tab === 'profile' ? 'myProfile' : tab === 'settings' ? 'settingsTitle' : 'timetableTitle']) || panelTitles[tab] || 'Faculty Workspace';
+  };
+  const openPanel = (tab='profile') => {
+    showPanelTab(tab);
+    panelOverlay?.classList.add('is-open');
+    panelOverlay?.setAttribute('aria-hidden', 'false');
+    body.classList.add('fd-panel-open');
+    profileMenu?.classList.remove('is-open');
+    profileTrigger?.setAttribute('aria-expanded', 'false');
+    requestAnimationFrame(() => {
+      /* Do not autofocus controls on mobile. Autofocus can open the native
+         keyboard and change the mobile viewport while switching workspace tabs. */
+      if (tab === 'profile' && window.matchMedia('(min-width: 761px)').matches) {
+        $('.fd-panel-view.is-active input')?.focus({preventScroll:true});
+      }
+    });
+  };
+  const closePanel = () => {
+    panelOverlay?.classList.remove('is-open');
+    panelOverlay?.setAttribute('aria-hidden', 'true');
+    body.classList.remove('fd-panel-open');
+  };
+  $$('[data-open-panel]').forEach(link => link.addEventListener('click', e => {
+    e.preventDefault(); setNav(false); openPanel(link.dataset.openPanel);
+  }));
+  panelTabs.forEach(btn => btn.addEventListener('click', () => showPanelTab(btn.dataset.panelTab)));
+  $$('[data-close-panel]').forEach(btn => btn.addEventListener('click', closePanel));
+
+  // ---------------- Profile ----------------
+  const profileForm = $('#profileForm');
+  const profileName = $('#profileName'), profileMobile = $('#profileMobile'), profileEmail = $('#profileEmail');
+  const profileHeroName = $('#profileHeroName'), profilePhotoPreview = $('#profilePhotoPreview');
+  const profileImageInput = $('#profileImageInput'), profileSaveMessage = $('#profileSaveMessage');
+  let storedProfile = JSON.parse(localStorage.getItem('jspmFacultyProfile') || 'null') || {};
+  const applyProfile = p => {
+    if (profileName) profileName.value = p.name || 'Mrs. A.S. Vatte';
+    if (profileMobile) profileMobile.value = p.mobile || '+91 98765 43210';
+    if (profileEmail) profileEmail.value = p.email || 'faculty@jspm.edu.in';
+    if (profileHeroName) profileHeroName.textContent = profileName.value;
+    const headerName = $('.profile-text strong'); if (headerName) headerName.textContent = profileName.value;
+    const greetingTitle = $('.greeting__title');
+    if (greetingTitle) { const wave = $('.wave', greetingTitle); greetingTitle.firstChild.textContent = `Good Morning, ${profileName.value} `; if (wave) greetingTitle.appendChild(wave); }
+    const mini = $('.mini-avatar'); if (mini) mini.textContent = initials(profileName.value);
+    const avatar = $('.profile-avatar'); if (avatar) avatar.textContent = initials(profileName.value);
+    if (p.photo) profilePhotoPreview.innerHTML = `<img src="${p.photo}" alt="Faculty profile photo">`;
+  };
+  const initials = name => name.split(/\s+/).filter(Boolean).slice(0,3).map(x => x.replace(/[^A-Za-z]/g,'')[0] || '').join('').toUpperCase().slice(0,2) || 'AS';
+  applyProfile(storedProfile);
+  profileImageInput?.addEventListener('change', () => {
+    const file = profileImageInput.files?.[0]; if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader(); reader.onload = () => { profilePhotoPreview.innerHTML = `<img src="${reader.result}" alt="Faculty profile photo">`; profilePhotoPreview.dataset.pendingPhoto = reader.result; }; reader.readAsDataURL(file);
+  });
+  profileForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    storedProfile = { name: profileName.value.trim(), mobile: profileMobile.value.trim(), email: profileEmail.value.trim(), photo: profilePhotoPreview.dataset.pendingPhoto || storedProfile.photo || '' };
+    localStorage.setItem('jspmFacultyProfile', JSON.stringify(storedProfile)); applyProfile(storedProfile);
+    profileSaveMessage.textContent = 'Profile saved on this device.'; profileSaveMessage.classList.add('is-visible');
+  });
+
+  // ---------------- Settings: every preference applies immediately ----------------
+  const settingIds = ['settingLanguage','settingDateFormat','settingAttendanceReminder','settingNotifications','settingAutoRefresh','settingReducedMotion'];
+  const defaultSettings = { settingLanguage:'en', settingDateFormat:'dmy', settingAttendanceReminder:true, settingNotifications:true, settingAutoRefresh:true, settingReducedMotion:false };
+  let settings = {...defaultSettings, ...(JSON.parse(localStorage.getItem('jspmFacultySettings') || 'null') || {})};
+  const applyReducedMotion = enabled => document.documentElement.classList.toggle('fd-reduced-motion', Boolean(enabled));
+  const saveSettingsImmediately = () => localStorage.setItem('jspmFacultySettings', JSON.stringify(settings));
+  settingIds.forEach(id => { const el=$('#'+id); if(!el) return; if(el.type==='checkbox') el.checked=Boolean(settings[id]); else el.value=settings[id]; });
+  applyReducedMotion(settings.settingReducedMotion);
+
+  // ---------------- Language engine ----------------
+  const translations = {
+    en: { overview:'Overview', attendance:'Attendance', reports:'Reports', management:'Management', settings:'Settings', facultyPortal:'Faculty Portal', workspaceSubtitle:'Your teaching and attendance workspace.', currentSession:'Current teaching session', liveNow:'Live Now', workspace:'Workspace', quickAccess:'Quick Access', secureAttendance:'Secure & Accurate Attendance', secureDesc:'Lecture, time and attendance records are handled through the ERP workflow.', myProfile:'My Profile', settingsTitle:'Settings', timetableTitle:'Timetable', timetable:'Timetable', saveProfile:'Save profile' },
+    mr: { overview:'आढावा', attendance:'उपस्थिती', reports:'अहवाल', management:'व्यवस्थापन', settings:'सेटिंग्ज', facultyPortal:'फॅकल्टी पोर्टल', workspaceSubtitle:'तुमचे अध्यापन आणि उपस्थिती कार्यक्षेत्र.', currentSession:'सध्याचे अध्यापन सत्र', liveNow:'आत्ता सुरू', workspace:'कार्य क्षेत्र', quickAccess:'जलद प्रवेश', secureAttendance:'सुरक्षित आणि अचूक उपस्थिती', secureDesc:'व्याख्यान, वेळ आणि उपस्थिती नोंदी ERP प्रक्रियेद्वारे हाताळल्या जातात.', myProfile:'माझे प्रोफाइल', settingsTitle:'सेटिंग्ज', timetableTitle:'वेळापत्रक', timetable:'वेळापत्रक', saveProfile:'प्रोफाइल जतन करा' },
+    hi: { overview:'अवलोकन', attendance:'उपस्थिति', reports:'रिपोर्ट', management:'प्रबंधन', settings:'सेटिंग्स', facultyPortal:'फैकल्टी पोर्टल', workspaceSubtitle:'आपका शिक्षण और उपस्थिति कार्यक्षेत्र।', currentSession:'वर्तमान शिक्षण सत्र', liveNow:'अभी लाइव', workspace:'कार्य क्षेत्र', quickAccess:'त्वरित पहुँच', secureAttendance:'सुरक्षित और सटीक उपस्थिति', secureDesc:'लेक्चर, समय और उपस्थिति रिकॉर्ड ERP प्रक्रिया के माध्यम से संभाले जाते हैं।', myProfile:'मेरी प्रोफ़ाइल', settingsTitle:'सेटिंग्स', timetableTitle:'समय सारणी', timetable:'समय सारणी', saveProfile:'प्रोफ़ाइल सहेजें' }
+  };
+  const applyLanguage = lang => {
+    const t = translations[lang] || translations.en;
+    document.documentElement.lang = lang === 'mr' ? 'mr' : lang === 'hi' ? 'hi' : 'en';
+    $$('[data-i18n]').forEach(el => { const key=el.dataset.i18n; if(t[key]) el.textContent=t[key]; });
+    document.querySelectorAll('[data-panel-tab]').forEach(btn => { const key=btn.dataset.panelTab==='profile'?'myProfile':btn.dataset.panelTab==='settings'?'settings':'timetable'; const span=btn.querySelector('span:last-child'); if(span) span.textContent=t[key]; });
+    if(panelTitle) panelTitle.textContent = translations[lang]?.[settingsPanelKey()] || panelTitles[currentPanelTab()] || 'Faculty Workspace';
+    saveSettingsImmediately();
+  };
+  const currentPanelTab = () => $('.fd-panel-view.is-active')?.dataset.panelView || 'profile';
+  const settingsPanelKey = () => currentPanelTab()==='profile'?'myProfile':currentPanelTab()==='settings'?'settingsTitle':'timetableTitle';
+  applyLanguage(settings.settingLanguage);
+  $('#settingLanguage')?.addEventListener('change', e => { settings.settingLanguage=e.target.value; saveSettingsImmediately(); applyLanguage(settings.settingLanguage); });
+  $('#settingDateFormat')?.addEventListener('change', e => { settings.settingDateFormat=e.target.value; saveSettingsImmediately(); });
+  ['settingAttendanceReminder','settingNotifications','settingAutoRefresh','settingReducedMotion'].forEach(id => $('#'+id)?.addEventListener('change', e => { settings[id]=e.target.checked; saveSettingsImmediately(); if(id==='settingReducedMotion') applyReducedMotion(e.target.checked); }));
+
+  // ---------------- Notification center ----------------
+  const notifOverlay = $('#fdNotifOverlay'), notifList = $('#fdNotifList'), notifCount = $('#fdNotifCount'), notifStatus = $('#fdNotifStatus');
+  const seed = [
+    {id:'n1', type:'attendance', title:'Attendance session ready', text:'Your scheduled DSU attendance session is ready to start.', time:'Just now', unread:true},
+    {id:'n2', type:'timetable', title:'Timetable synchronized', text:'The latest faculty timetable is available for the ERP schedule workflow.', time:'Today, 10:05 AM', unread:true},
+    {id:'n3', type:'system', title:'ERP notice', text:'Faculty attendance records are being synchronized securely.', time:'Yesterday', unread:false}
+  ];
+  let notifications = JSON.parse(localStorage.getItem('jspmFacultyNotifications') || 'null') || seed;
+  const iconFor = type => type==='attendance'?'✓':type==='timetable'?'▦':'•';
+  const renderNotifications = () => {
+    if(!notifList) return;
+    const unread=notifications.filter(n=>n.unread).length; notifCount.textContent=unread;
+    const bellDot=$('.icon-btn__dot'); if(bellDot) bellDot.hidden=unread===0;
+    if(!notifications.length){ notifList.innerHTML='<div class="fd-notif-empty"><span>✓</span><strong>You are all caught up</strong><p>No new notifications.</p></div>'; return; }
+    notifList.innerHTML=notifications.map(n=>`<article class="fd-notif-item ${n.unread?'is-unread':''}" data-notif-id="${n.id}"><span class="fd-notif-item__icon">${iconFor(n.type)}</span><div class="fd-notif-item__body"><div class="fd-notif-item__top"><strong>${escapeHtml(n.title)}</strong><time>${escapeHtml(n.time)}</time></div><p>${escapeHtml(n.text)}</p></div><button class="fd-notif-delete" type="button" data-delete-notification="${n.id}" aria-label="Delete notification">×</button></article>`).join('');
+  };
+  const escapeHtml = s => String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const openNotifications = () => { renderNotifications(); notifOverlay?.classList.add('is-open'); notifOverlay?.setAttribute('aria-hidden','false'); body.classList.add('fd-notif-open'); profileMenu?.classList.remove('is-open'); profileTrigger?.setAttribute('aria-expanded','false'); };
+  const closeNotifications = () => { notifOverlay?.classList.remove('is-open'); notifOverlay?.setAttribute('aria-hidden','true'); body.classList.remove('fd-notif-open'); };
+  $('#fdNotifBell')?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); openNotifications(); });
+  $$('[data-close-notifications]').forEach(el=>el.addEventListener('click', closeNotifications));
+  notifList?.addEventListener('click', e => {
+    const del=e.target.closest('[data-delete-notification]'); if(!del) return;
+    const id=del.dataset.deleteNotification; notifications=notifications.filter(n=>n.id!==id); localStorage.setItem('jspmFacultyNotifications',JSON.stringify(notifications)); renderNotifications();
+  });
+  $('#fdNotifClear')?.addEventListener('click', () => { if(!notifications.length) return; notifications=[]; localStorage.setItem('jspmFacultyNotifications','[]'); notifStatus.textContent='All notifications deleted.'; renderNotifications(); });
+  $('#fdNotifSync')?.addEventListener('click', () => {
+    // Future backend hook: replace this demo refresh with GET /notifications from FastAPI.
+    notifStatus.textContent='Notifications synchronized locally. Connect this action to your FastAPI notification endpoint when the API is ready.';
+    renderNotifications();
+  });
+  renderNotifications();
+  window.erpNotifications = {
+    set(items){ notifications=Array.isArray(items)?items:[]; localStorage.setItem('jspmFacultyNotifications',JSON.stringify(notifications)); renderNotifications(); },
+    add(item){ notifications=[item,...notifications]; localStorage.setItem('jspmFacultyNotifications',JSON.stringify(notifications)); renderNotifications(); },
+    open: openNotifications
+  };
+
+  // ---------------- Logout ----------------
+  $('#fdLogoutBtn')?.addEventListener('click', () => {
+    const ok = window.confirm('Log out of the faculty ERP account?');
+    if(!ok) return;
+    // Future backend hook: invalidate the server-side session/token before redirecting.
+    sessionStorage.clear();
+    window.dispatchEvent(new CustomEvent('erp:logout'));
+    alert('Logout action is ready. Connect the redirect to your faculty login page/API endpoint.');
+  });
+
+  // ---------------- Timetable Excel preview ----------------
+  const timetableInput=$('#timetableInput'), timetableFileCard=$('#timetableFileCard'), timetableFileName=$('#timetableFileName'), timetableFileMeta=$('#timetableFileMeta'), timetablePreview=$('#timetablePreview'), timetablePreviewTable=$('#timetablePreviewTable'), timetablePreviewNote=$('#timetablePreviewNote'), uploadTimetableBtn=$('#uploadTimetableBtn'), timetableMessage=$('#timetableMessage');
+  let selectedTimetableFile=null;
+  const renderWorkbookPreview=file=>{
+    if(!window.XLSX){ timetablePreviewNote.textContent='Excel preview library is unavailable; the file is still selected.'; timetablePreview.classList.remove('is-hidden'); return; }
+    const reader=new FileReader(); reader.onload=event=>{ try{ const wb=XLSX.read(event.target.result,{type:'array'}), name=wb.SheetNames[0], rows=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:''}).slice(0,8); timetablePreviewTable.innerHTML=rows.map((row,i)=>`<tr>${row.slice(0,8).map(c=>i===0?`<th>${escapeHtml(c)}</th>`:`<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join(''); timetablePreviewNote.textContent=`${name} • showing first ${Math.min(rows.length,8)} rows`; timetablePreview.classList.remove('is-hidden'); }catch{ timetablePreviewNote.textContent='Could not preview this workbook, but the file is selected and ready for upload.'; timetablePreview.classList.remove('is-hidden'); } }; reader.readAsArrayBuffer(file);
+  };
+  timetableInput?.addEventListener('change',()=>{ const file=timetableInput.files?.[0]; if(!file)return; selectedTimetableFile=file; timetableFileCard.classList.remove('is-hidden'); timetableFileName.textContent=file.name; timetableFileMeta.textContent=`${(file.size/1024).toFixed(1)} KB • ${file.type||'Excel workbook'}`; uploadTimetableBtn.disabled=false; timetableMessage.textContent=''; renderWorkbookPreview(file); });
+  $('#removeTimetable')?.addEventListener('click',()=>{ selectedTimetableFile=null; timetableInput.value=''; timetableFileCard.classList.add('is-hidden'); timetablePreview.classList.add('is-hidden'); uploadTimetableBtn.disabled=true; timetableMessage.textContent=''; });
+  // ---------------- FastAPI integration ----------------
+  const API_BASE = 'http://127.0.0.1:8000';
+  const normalizePhone = value => String(value || '').replace(/\D/g, '').slice(-10);
+  const getTeacherPhone = () => normalizePhone(localStorage.getItem('jspmTeacherPhone') || profileMobile?.value || '9876543210');
+  const liveCard = document.querySelector('.live-card');
+  const startAttendanceBtn = $('#startAttendanceBtn');
+  const liveClassTitle = $('#live-class-title');
+  const liveFacultyName = $('#live-faculty-name');
+  const liveSubject = $('#live-subject');
+  const liveTimeRoom = $('#live-time-room');
+  const liveTypeBadge = $('#live-type-badge');
+  const liveBatchBadge = $('#live-batch-badge');
+  const dashboardDate = $('#dashboardDate');
+
+  const formatDate = iso => {
+    if (!iso) return '';
+    const d = new Date(`${iso}T00:00:00`);
+    return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric', weekday:'long'});
+  };
+  const formatTime = value => {
+    if (!value) return '';
+    const [h,m] = String(value).split(':').map(Number);
+    if (Number.isNaN(h) || Number.isNaN(m)) return value;
+    const suffix = h >= 12 ? 'PM' : 'AM';
+    const hour = h % 12 || 12;
+    return `${hour}:${String(m).padStart(2,'0')} ${suffix}`;
+  };
+  const setDashboardState = (state, message='') => {
+    if (!liveCard) return;
+    liveCard.dataset.apiState = state;
+    if (state === 'loading') {
+      liveCard.style.display='';
+      liveClassTitle.textContent='Checking current class…';
+      liveTimeRoom.textContent='Connecting to timetable service…';
+      startAttendanceBtn.disabled=true;
+    } else if (state === 'error') {
+      liveCard.style.display='';
+      liveClassTitle.textContent='Unable to load current class';
+      liveTimeRoom.textContent=message || 'Start FastAPI and try again.';
+      startAttendanceBtn.disabled=true;
+    }
+  };
+  const loadLiveSession = async () => {
+    const phone = getTeacherPhone();
+    if (!phone) { setDashboardState('error','No faculty phone number is available.'); return; }
+    localStorage.setItem('jspmTeacherPhone', phone);
+    setDashboardState('loading');
+    try {
+      const response = await fetch(`${API_BASE}/teachers/by-phone/${encodeURIComponent(phone)}/active-slot`);
+      const raw = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(raw.detail || `FastAPI returned HTTP ${response.status}`);
+      const teacher = raw.teacher || {};
+      if (raw.current_date) { dashboardDate.dateTime = raw.current_date; dashboardDate.textContent = formatDate(raw.current_date); }
+      if (!raw.has_active_class) {
+        liveCard.style.display='none';
+        let empty = $('#noLiveLectureCard');
+        if (!empty) {
+          empty=document.createElement('section'); empty.id='noLiveLectureCard'; empty.className='live-card';
+          empty.innerHTML='<div class="live-card__body"><div class="live-card__info"><p class="live-card__eyebrow">Schedule</p><h2 class="live-card__title">No lecture right now</h2><p style="margin-top:8px;opacity:.75">There is no active lecture scheduled for this faculty member at the moment.</p></div></div>';
+          liveCard.parentNode.insertBefore(empty, liveCard.nextSibling);
+        }
+        return;
+      }
+      const slot = raw.slot_info || {};
+      const teacherName = teacher.name || 'Faculty';
+      const className = slot.class_name || 'Class';
+      const department = slot.department || '';
+      const subject = slot.subject_code || 'Scheduled subject';
+      const type = slot.slot_type || 'Lecture';
+      const batch = slot.target_batch || '';
+      liveCard.style.display='';
+      $('#noLiveLectureCard')?.remove();
+      liveClassTitle.textContent = department ? `${className} — ${department}` : className;
+      liveFacultyName.textContent = teacherName;
+      liveSubject.textContent = subject;
+      liveTimeRoom.textContent = `${formatTime(slot.start_time)} – ${formatTime(slot.end_time)}${slot.room_no ? ` · Room ${slot.room_no}` : ''}`;
+      liveTypeBadge.textContent = type; liveTypeBadge.hidden = !type;
+      liveBatchBadge.textContent = batch ? `Batch ${batch}` : ''; liveBatchBadge.hidden = !batch || type.toLowerCase() !== 'practical';
+      startAttendanceBtn.disabled=false;
+      startAttendanceBtn.onclick = () => { localStorage.setItem('jspmTeacherPhone', phone); localStorage.setItem('jspmActiveTimetableId', String(slot.timetable_id || '')); window.location.href='attendance.html'; };
+      window.erpLiveSession = raw;
+    } catch (error) {
+      console.error(error);
+      setDashboardState('error', error.message);
+    }
+  };
+  startAttendanceBtn?.addEventListener('click', () => {
+    if (startAttendanceBtn.disabled) return;
+    localStorage.setItem('jspmTeacherPhone', getTeacherPhone());
+    window.location.href='attendance.html';
+  });
+
+  uploadTimetableBtn?.addEventListener('click', async () => {
+    if (!selectedTimetableFile) return;
+    uploadTimetableBtn.disabled=true;
+    timetableMessage.textContent='Uploading timetable to FastAPI…';
+    timetableMessage.classList.add('is-visible');
+    try {
+      const form = new FormData();
+      form.append('file', selectedTimetableFile);
+      const department = (profileHeroName?.closest('.fd-profile-hero')?.querySelector('p')?.textContent || 'Faculty • Computer Engineering').replace(/^.*•\s*/, '').trim() || 'Computer Engineering';
+      const response = await fetch(`${API_BASE}/admin/upload-timetable-excel?department=${encodeURIComponent(department)}&clear_existing=true`, {method:'POST', body:form});
+      const raw = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(raw.detail || `Upload failed (HTTP ${response.status})`);
+      timetableMessage.textContent = raw.message || 'Timetable uploaded successfully to ERP.';
+      window.dispatchEvent(new CustomEvent('erp:timetable-synced', {detail:raw}));
+      await loadLiveSession();
+    } catch (error) {
+      console.error(error);
+      timetableMessage.textContent = `Upload failed: ${error.message}`;
+    } finally {
+      uploadTimetableBtn.disabled=false;
+    }
+  });
+
+  // Refresh the live card when the dashboard is opened and, if enabled, periodically.
+  loadLiveSession();
+  setInterval(() => { if (settings.settingAutoRefresh) loadLiveSession(); }, 60000);
+
+  // ---------------- Keyboard / accessibility ----------------
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){ setNav(false); closePanel(); closeNotifications(); profileMenu?.classList.remove('is-open'); profileTrigger?.setAttribute('aria-expanded','false'); }
+  });
+  window.addEventListener('resize',()=>{ if(window.innerWidth>959)setNav(false); });
+  panelOverlay?.addEventListener('click', e=>{ if(e.target===panelOverlay) closePanel(); });
+  notifOverlay?.addEventListener('click', e=>{ if(e.target===notifOverlay) closeNotifications(); });
+
+  const initialHash=window.location.hash.replace('#','');
+  if(['profile','settings','timetable'].includes(initialHash)) openPanel(initialHash);
+})();
+</script>
+</body>
+</html>
